@@ -1,2 +1,2 @@
-# projectPixelArt
+# escapeLab
 First games project
