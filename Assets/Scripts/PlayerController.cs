@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float jumpForce = 7f;
 
     private Rigidbody rb;
@@ -20,19 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Keyboard input
+        // Keyboard input & Gamepad (for some reasons)
         float xInput = Input.GetAxisRaw("Horizontal");
         float yInput = Input.GetAxisRaw("Vertical");
-
-        // Gamepad input
-        /*if (xInput == 0)
-        {
-            xInput = Input.GetAxisRaw("GamepadHorizontal");
-        }
-        if (yInput == 0)
-        {
-            yInput = Input.GetAxisRaw("GamepadVertical");
-        }*/
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -42,11 +32,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        movement = Quaternion.Euler(0f, mainCameraTransform.rotation.eulerAngles.y, 0f) * movement;
-        movement.Normalize();
-        rb.velocity = movement * moveSpeed;
+        //Player & Camera movements
+        Vector3 cameraMovement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        cameraMovement = Quaternion.Euler(0f, mainCameraTransform.rotation.eulerAngles.y, 0f) * cameraMovement;
+        cameraMovement.Normalize();
+        transform.position += cameraMovement * moveSpeed * Time.deltaTime;
 
+        //Jump if needed
         if (jumpPressed && isGrounded)
         {
             rb.AddForce(new Vector3(0f, jumpForce, 0f), ForceMode.Impulse);
