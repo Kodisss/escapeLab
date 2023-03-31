@@ -5,6 +5,10 @@ Code :
 - box camera so it can't see stuff we don't want user to see
 - let player be free when camera is boxed
 
+Animation :
+- Create simple animations : idle, walk, jump, run
+- Complex animations : fire, gunfire, punch, kicks, ...
+
 Art :
 
 - cell shading implementation
