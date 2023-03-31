@@ -1,50 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 6f;
-    [SerializeField] private float jumpForce = 7f;
+    public float speed = 5.0f; // speed of movement
+    public float jumpForce = 2.0f; // force of jump
+    public float cameraFollowSpeed = 5.0f; // speed of camera follow
+    public float cameraDistance = 10.0f; // distance from camera to player
+    public float cameraHeight = 5.0f; // height of camera above player
 
-    private Rigidbody rb;
     private bool isGrounded;
-    private bool jumpPressed;
-    private Transform mainCameraTransform;
+    private Vector3 moveDirection = Vector3.zero;
+    private Rigidbody rb;
+    private Camera mainCamera;
 
     void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();
-        mainCameraTransform = Camera.main.transform;
-    }
-
-    void Update()
-    {
-        // Keyboard input & Gamepad (for some reasons)
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumpPressed = true;
-        }
+        rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
     }
 
     void FixedUpdate()
     {
-        //Player & Camera movements
-        Vector3 cameraMovement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        cameraMovement = Quaternion.Euler(0f, mainCameraTransform.rotation.eulerAngles.y, 0f) * cameraMovement;
-        cameraMovement.Normalize();
-        transform.position += cameraMovement * moveSpeed * Time.deltaTime;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        //Jump if needed
-        if (jumpPressed && isGrounded)
+        // calculate movement direction based on input
+        moveDirection = new Vector3(horizontal, 0, vertical);
+        moveDirection = mainCamera.transform.TransformDirection(moveDirection);
+        moveDirection.y = 0;
+        moveDirection.Normalize();
+        moveDirection *= speed;
+
+        // Check if the character is on the ground
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.5f);
+        Debug.Log(isGrounded + "\n");
+
+        // jump
+        if (Input.GetButton("Jump") && isGrounded)
         {
-            rb.AddForce(new Vector3(0f, jumpForce, 0f), ForceMode.Impulse);
-            jumpPressed = false;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        // move the player using rigidbody
+        rb.MovePosition(transform.position + moveDirection * Time.deltaTime);
+
+        // calculate camera position based on player position
+        Vector3 cameraTargetPosition = transform.position - mainCamera.transform.forward * cameraDistance;
+        cameraTargetPosition.y = transform.position.y + cameraHeight;
+
+        // smoothly move the camera to the target position
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraTargetPosition, cameraFollowSpeed * Time.deltaTime);
+
+        // rotate the player to face the direction of movement
+        if (moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveDirection);
+        }
     }
 }
