@@ -1,0 +1,57 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+
+# Visual Studio / MonoDevelop generated
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln
+/*.user
+/*.unityproj
+/*.booproj
+
+# Build
+/[Bb]uild/
+
+# Asset Store
+/UAS/
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+*.zip
+*.ipa
+
+# Android build temp
+*.aar
+*.apk~
+*.obb
+
+# iOS build temp
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+*.xcworkspace/*
+!*.xcworkspace/xcuserdata
+!*.xcworkspace/xcshareddata
+!*.xcworkspace/xcuserdata/*
+
+# Gradle files
+.gradle/
+
+# Crashlytics generated file
+crashlytics-build.properties
+
+# Mac files
+.DS_Store
