@@ -1,7 +1,8 @@
 Code :
 
-- stick the movement to player
-- stick camera to player movements
+- stick the movement to player done
+- stick camera to player movements done
+
 - box camera so it can't see stuff we don't want user to see
 - let player be free when camera is boxed
 
