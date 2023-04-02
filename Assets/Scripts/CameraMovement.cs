@@ -9,6 +9,8 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float smoothTime; // adjusts the smoothness of the camera following
     [SerializeField] private float offset; // offset to make the camera a little be early so the user can see where they go
+    [SerializeField] private LayerMask mask; // mask of what shoud bonk the camera
+    [SerializeField] private float bonkRadius; // radius that should be bonked to
 
     private Vector3 input;
     private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function
@@ -21,7 +23,16 @@ public class CameraMovement : MonoBehaviour
     // moves the camera smoothly with an offset so you see where you go
     private void LateUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset, ref currentVelocity, smoothTime);
+        if (!DoesBonk())
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset, ref currentVelocity, smoothTime);
+        }
+    }
+
+    // does the camera bonk a wall?
+    private bool DoesBonk()
+    {
+        return Physics.CheckSphere(target.transform.position, bonkRadius, mask);
     }
 
     // gets the input from whatever controller
