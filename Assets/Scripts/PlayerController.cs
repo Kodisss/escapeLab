@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // gets the input from whatever controller
     private void GatherInput()
     {
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy (look into that)
     }
 
     // makes the player look towards the direction of the movement
@@ -41,6 +41,6 @@ public class PlayerController : MonoBehaviour
     // makes the player move
     private void Move()
     {
-        rb.MovePosition(transform.position + input.ToIso().normalized * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+        rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
     }
 }
