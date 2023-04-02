@@ -434,8 +434,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba890de744d590f4e8457d42e82d30b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  speed: 5
   jumpForce: 7
+  cameraFollowSpeed: 5
+  cameraDistance: 10
+  cameraHeight: 5
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446341123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.36, y: 0.507, z: 14.73}
+  m_LocalPosition: {x: 10.38, y: 0.507, z: 15.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -823,7 +826,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987898170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.529999, y: 2.5, z: 15}
+  m_LocalPosition: {x: 17.48, y: 2.5, z: 17.52}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

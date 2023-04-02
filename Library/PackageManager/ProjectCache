@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638159504448570648
-    m_Hash: 613638587
+      ticks: 638160703319460994
+    m_Hash: 253767769
   m_LockFileStatus:
     m_FilePath: C:/Users/melod/Desktop/A&M/EscapeLab/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638159504448609341
-    m_Hash: 4213066547
+      ticks: 638160703319460994
+    m_Hash: 1801675949
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -3918,6 +3918,11 @@ m_ResolvedPackages:
   errors: []
   versions:
     all:
+    - 0.1.0-preview.4
+    - 0.1.0-preview.8
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
     - 1.0.3
     - 2.0.0
     - 2.0.1
