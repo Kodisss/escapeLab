@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // gets the input from whatever controller
     private void GatherInput()
     {
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy (look into that)
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
     }
 
     // makes the player look towards the direction of the movement
