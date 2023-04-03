@@ -593,6 +593,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   bonkSize: 5
+  debugVar: 0
 --- !u!1 &1232959721
 GameObject:
   m_ObjectHideFlags: 0
