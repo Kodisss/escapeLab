@@ -1,63 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5.0f; // speed of movement
-    public float jumpForce = 2.0f; // force of jump
-    public float cameraFollowSpeed = 5.0f; // speed of camera follow
-    public float cameraDistance = 10.0f; // distance from camera to player
-    public float cameraHeight = 5.0f; // height of camera above player
+    // variables
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float turnSpeed = 1080;
+    private Vector3 input;
 
-    private bool isGrounded;
-    private Vector3 moveDirection = Vector3.zero;
-    private Rigidbody rb;
-    private Camera mainCamera;
-
-    void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody>();
-        mainCamera = Camera.main;
+        GatherInput();
+        Look();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        Move();
+    }
 
-        // calculate movement direction based on input
-        moveDirection = new Vector3(horizontal, 0, vertical);
-        moveDirection = mainCamera.transform.TransformDirection(moveDirection);
-        moveDirection.y = 0;
-        moveDirection.Normalize();
-        moveDirection *= speed;
+    // gets the input from whatever controller
+    private void GatherInput()
+    {
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+    }
 
-        // Check if the character is on the ground
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.5f);
-        Debug.Log(isGrounded + "\n");
+    // makes the player look towards the direction of the movement
+    private void Look()
+    {
+        if (input == Vector3.zero) return; // this is used so the player doesn't default to a looking position after moving
 
-        // jump
-        if (Input.GetButton("Jump") && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        var rot = Quaternion.LookRotation(input.ToIso(), Vector3.up); // gathers the rotation from controller inputs and offsets it by 45° with the ToIso function
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnSpeed * Time.deltaTime); // applies the rotation to the player at a given speed
+    }
 
-        // move the player using rigidbody
-        rb.MovePosition(transform.position + moveDirection * Time.deltaTime);
-
-        // calculate camera position based on player position
-        Vector3 cameraTargetPosition = transform.position - mainCamera.transform.forward * cameraDistance;
-        cameraTargetPosition.y = transform.position.y + cameraHeight;
-
-        // smoothly move the camera to the target position
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraTargetPosition, cameraFollowSpeed * Time.deltaTime);
-
-        // rotate the player to face the direction of movement
-        if (moveDirection != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveDirection);
-        }
+    // makes the player move
+    private void Move()
+    {
+        rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
     }
 }

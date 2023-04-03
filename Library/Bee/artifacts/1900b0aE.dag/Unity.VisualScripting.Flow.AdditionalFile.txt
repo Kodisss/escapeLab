@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\melod\Desktop\A&M\EscapeLab
+=======
+D:\Kodiss\Documents\AshMeloGames\escapeLab
+>>>>>>> cameraMovement
