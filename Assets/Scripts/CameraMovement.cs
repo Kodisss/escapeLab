@@ -63,25 +63,25 @@ public class CameraMovement : MonoBehaviour
             if (bonkDirection[0])
             {
                 if(debugMode) Debug.Log("I bonk topright");
-                transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset - Vector3.right * (bonkSize - bonkDistance[0]), ref currentVelocity, smoothTime);
+                transform.position = Vector3.SmoothDamp(transform.position, target.position - Vector3.right * (bonkSize - bonkDistance[0]), ref currentVelocity, smoothTime);
             }
             // this one is top left
             if (bonkDirection[1])
             {
                 if (debugMode) Debug.Log("I bonk topleft");
-                transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset - Vector3.forward * (bonkSize - bonkDistance[1]), ref currentVelocity, smoothTime);
-            }
+                transform.position = Vector3.SmoothDamp(transform.position, target.position - Vector3.forward * (bonkSize - bonkDistance[1]), ref currentVelocity, smoothTime);
+            }            
             // this one is bottom left
             if (bonkDirection[2])
             {
                 if (debugMode) Debug.Log("I bonk botleft");
-                transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset - Vector3.left * (bonkSize - bonkDistance[2]), ref currentVelocity, smoothTime);
+                transform.position = Vector3.SmoothDamp(transform.position, target.position - Vector3.left * (bonkSize - bonkDistance[2]), ref currentVelocity, smoothTime);
             }
             // this one is bottom right
             if (bonkDirection[3])
             {
                 if (debugMode) Debug.Log("I bonk botright");
-                transform.position = Vector3.SmoothDamp(transform.position, target.position + input.ToIso().normalized * offset - Vector3.back * (bonkSize - bonkDistance[3]), ref currentVelocity, smoothTime);
+                transform.position = Vector3.SmoothDamp(transform.position, target.position - Vector3.back * (bonkSize - bonkDistance[3]), ref currentVelocity, smoothTime);
             }
         }
     }
