@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // variables to dash
     [Header("Dashing Variables")]
     [SerializeField] private float dashDistance = 3f;
-    [SerializeField] private float dashDuration = 0.5f;
+    [SerializeField] private float dashDuration = 0.1f;
     [SerializeField] private float dashCooldown = 1.5f;
 
     private bool isDashing = false;

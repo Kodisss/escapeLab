@@ -586,9 +586,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3326090097998177502}
   - component: {fileID: 8703357492192476836}
-  - component: {fileID: 8703357492192476838}
   - component: {fileID: 8703357492192476839}
   - component: {fileID: 8703357492192476856}
+  - component: {fileID: 4193860007310392323}
+  - component: {fileID: 2785996246157768676}
   m_Layer: 0
   m_Name: cyberpunk
   m_TagString: Player
@@ -634,21 +635,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8703357492192476838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694126739177635428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba890de744d590f4e8457d42e82d30b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8703357492192476839}
-  speed: 5
-  turnSpeed: 1080
 --- !u!54 &8703357492192476839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -679,6 +665,41 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!114 &4193860007310392323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694126739177635428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba890de744d590f4e8457d42e82d30b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  turnSpeed: 1080
+  dashDistance: 3
+  dashDuration: 0.1
+  dashCooldown: 1.5
+  debugMode: 0
+--- !u!114 &2785996246157768676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694126739177635428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567fb238a92996f428a2b2b3c142aa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 6
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  debugMode: 0
 --- !u!1 &2712919217347136237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1768,7 @@ SkinnedMeshRenderer:
   - {fileID: 7972414191093988174}
   - {fileID: 5089083983973067955}
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 6925990057330454590}
+  m_RootBone: {fileID: 8286407099233638673}
   m_AABB:
     m_Center: {x: -0.10068214, y: -0.7250693, z: -0.14940226}
     m_Extent: {x: 1.8706825, y: 4.576442, z: 1.166989}

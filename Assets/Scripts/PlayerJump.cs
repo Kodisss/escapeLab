@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -37,7 +38,11 @@ public class PlayerJump : MonoBehaviour
     private void CheckGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundMask);
-        if (debugMode) if (isGrounded) Debug.Log("Am Grounded");
+        if (debugMode)
+        {
+            Debug.DrawRay(rb.position, Vector3.down * 1.1f, Color.red);
+            if (isGrounded) Debug.Log("Am Grounded");
+        }
     }
 
     // check if the jump button is pressed to jump by addind a force

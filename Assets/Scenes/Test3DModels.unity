@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 559739652}
   - component: {fileID: 559739651}
   - component: {fileID: 559739650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,6 +1274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cyberpunk
       objectReference: {fileID: 0}
+    - target: {fileID: 2785996246157768676, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3326090097998177502, guid: 473815cf29320e1409297509d0c978f6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1284,7 +1288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3326090097998177502, guid: 473815cf29320e1409297509d0c978f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3326090097998177502, guid: 473815cf29320e1409297509d0c978f6, type: 3}
       propertyPath: m_LocalPosition.z
