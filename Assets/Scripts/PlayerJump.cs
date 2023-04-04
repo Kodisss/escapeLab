@@ -33,18 +33,13 @@ public class PlayerJump : MonoBehaviour
         Jump();
     }
 
-    private void FixedUpdate()
-    {
-        //CheckGrounded();
-    }
-
     // checks if the player is at 1.1 distance of the ground
     private bool CheckGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundMask);
     }
 
-    // check if the jump button is pressed to jump by addind a force
+    // check if the jump button is pressed and if player is grounded then jump
     private void Jump()
     {
         if (Input.GetButtonDown("Jump") && CheckGrounded())
