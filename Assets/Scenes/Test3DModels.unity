@@ -1213,6 +1213,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2109921192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8022177029787236, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+  m_PrefabInstance: {fileID: 3982476384873435145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2134414374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1283,10 @@ PrefabInstance:
       propertyPath: debugMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2785996246157768676, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 2109921192}
     - target: {fileID: 3326090097998177502, guid: 473815cf29320e1409297509d0c978f6, type: 3}
       propertyPath: m_RootOrder
       value: 1
