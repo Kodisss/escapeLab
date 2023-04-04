@@ -473,14 +473,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2492799241376188773}
-  m_LocalRotation: {x: 0.04218388, y: 0.18652207, z: 0.0015454041, w: 0.98154354}
+  m_LocalRotation: {x: -0.082424104, y: -0.21967818, z: -0.02144496, w: 0.9718477}
   m_LocalPosition: {x: -0, y: 0.6766231, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8150971848121767721}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -9.766, y: -25.447, z: -0.318}
 --- !u!1 &2499334166300572388
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +625,7 @@ Animator:
   m_GameObject: {fileID: 2694126739177635428}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3f052f80de8a78b43ac3e812059cd8d2, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acb4f371a3de9114d838a2b99905b9af, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 8022177029787236}
   debugMode: 0
 --- !u!1 &2712919217347136237
 GameObject:
