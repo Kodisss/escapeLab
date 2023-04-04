@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // variables
+    // variables to move
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 5;
-    [SerializeField] private float turnSpeed = 1080;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float turnSpeed = 1080f;
     private Vector3 input;
+
+    // debug mode
+    [SerializeField] private bool debugMode;
 
     private void Update()
     {
