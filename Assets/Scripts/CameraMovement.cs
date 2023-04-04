@@ -16,6 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     private bool[] bonkDirection = new bool[4]; // saves the 4 directions of the player to know if they bonked a wall
     private float[] bonkDistance = new float[4]; // saves the 4 distances in the 4 directions
+    private float precision = 0.001f;
 
     private Vector3 input; // saves the user's inputs
     private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function 
@@ -72,26 +73,61 @@ public class CameraMovement : MonoBehaviour
             // this one is up
             if (bonkDirection[0] && bonkDirection[1])
             {
-                if (debugMode) Debug.Log("I bonk up");
-                playerPos = target.position - Vector3.right * (bonkSize - bonkDistance[0]) - Vector3.forward * (bonkSize - bonkDistance[1]);
+                // if the raycasts are equal it means we are on a straight wall and not a corner that's why we need to divide by 2 the distance
+                //so it doesn't make the camera go double the distance backwards
+                if (Mathf.Abs(bonkDistance[0] - bonkDistance[1]) < precision)
+                {
+                    if (debugMode) Debug.Log("I bonk up straight");
+                    playerPos = target.position - Vector3.right * (bonkSize - bonkDistance[0]) / 2 - Vector3.forward * (bonkSize - bonkDistance[1]) / 2;
+                }
+                else
+                {
+                    if (debugMode) Debug.Log("I bonk up corner");
+                    playerPos = target.position - Vector3.right * (bonkSize - bonkDistance[0]) - Vector3.forward * (bonkSize - bonkDistance[1]);
+                }
+                
             }
             // this one is left
             else if (bonkDirection[1] && bonkDirection[2])
             {
-                if (debugMode) Debug.Log("I bonk left");
-                playerPos = target.position - Vector3.forward * (bonkSize - bonkDistance[1]) - Vector3.left * (bonkSize - bonkDistance[2]);
+                if (Mathf.Abs(bonkDistance[1] - bonkDistance[2]) < precision)
+                {
+                    if (debugMode) Debug.Log("I bonk left straight");
+                    playerPos = target.position - Vector3.forward * (bonkSize - bonkDistance[1]) / 2 - Vector3.left * (bonkSize - bonkDistance[2]) / 2;
+                }
+                else
+                {
+                    if (debugMode) Debug.Log("I bonk left corner");
+                    playerPos = target.position - Vector3.forward * (bonkSize - bonkDistance[1]) - Vector3.left * (bonkSize - bonkDistance[2]);
+                }
             }
             // this one is down
             else if (bonkDirection[2] && bonkDirection[3])
             {
-                if (debugMode) Debug.Log("I bonk down");
-                playerPos = target.position - Vector3.left * (bonkSize - bonkDistance[2]) - Vector3.back * (bonkSize - bonkDistance[3]);
+                if (Mathf.Abs(bonkDistance[2] - bonkDistance[3]) < precision)
+                {
+                    if (debugMode) Debug.Log("I bonk down straight");
+                    playerPos = target.position - Vector3.left * (bonkSize - bonkDistance[2]) / 2 - Vector3.back * (bonkSize - bonkDistance[3]) / 2;
+                }
+                else
+                {
+                    if (debugMode) Debug.Log("I bonk down corner");
+                    playerPos = target.position - Vector3.left * (bonkSize - bonkDistance[2]) - Vector3.back * (bonkSize - bonkDistance[3]);
+                }
             }
             // this one is right
             else if (bonkDirection[3] && bonkDirection[0])
             {
-                if (debugMode) Debug.Log("I bonk right");
-                playerPos = target.position - Vector3.back * (bonkSize - bonkDistance[3]) - Vector3.right * (bonkSize - bonkDistance[0]);
+                if (Mathf.Abs(bonkDistance[3] - bonkDistance[0]) < precision)
+                {
+                    if (debugMode) Debug.Log("I bonk right straight");
+                    playerPos = target.position - Vector3.back * (bonkSize - bonkDistance[3]) / 2 - Vector3.right * (bonkSize - bonkDistance[0]) / 2;
+                }
+                else
+                {
+                    if (debugMode) Debug.Log("I bonk right corner");
+                    playerPos = target.position - Vector3.back * (bonkSize - bonkDistance[3]) - Vector3.right * (bonkSize - bonkDistance[0]);
+                }
             }
             // this one is top right
             else if (bonkDirection[0])
