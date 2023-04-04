@@ -932,7 +932,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   bonkSize: 5
-  debugMode: 1
+  debugMode: 0
 --- !u!1 &1232959721
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +947,8 @@ GameObject:
   - component: {fileID: 1232959723}
   - component: {fileID: 1232959726}
   - component: {fileID: 1232959727}
+  - component: {fileID: 1232959729}
+  - component: {fileID: 1232959728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1064,6 +1066,36 @@ MonoBehaviour:
   rb: {fileID: 1232959726}
   speed: 5
   turnSpeed: 1080
+  debugMode: 0
+--- !u!114 &1232959728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232959721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f4bc11c1bb0734da0f9c976f2972a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1232959726}
+  dashDistance: 3
+  dashDuration: 0.5
+  dashCooldown: 1.5
+--- !u!114 &1232959729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232959721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567fb238a92996f428a2b2b3c142aa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1232959726}
   jumpForce: 6
   groundMask:
     serializedVersion: 2

@@ -8,14 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     // variables to move
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed;
-    [SerializeField] private float turnSpeed;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float turnSpeed = 1080f;
     private Vector3 input;
-
-    // variables to jump
-    private bool isGrounded;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private LayerMask groundMask;
 
     // debug mode
     [SerializeField] private bool debugMode;
@@ -24,13 +19,11 @@ public class PlayerController : MonoBehaviour
     {
         GatherInput();
         Look();
-        Jump();
     }
 
     private void FixedUpdate()
     {
         Move();
-        CheckGrounded();
     }
 
     // gets the input from whatever controller
@@ -52,21 +45,5 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
-    }
-
-    // checks if the player is at 1.1 distance of the ground
-    private void CheckGrounded()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundMask);
-        if (debugMode) if (isGrounded) Debug.Log("Am Grounded");
-    }
-
-    // check if the jump button is pressed to jump by addind a force
-    private void Jump()
-    {
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
     }
 }
