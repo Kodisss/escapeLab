@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody rb;
 
     // variables to jump
-    private bool isGrounded;
+    [Header("Jumping Variables")]
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private LayerMask groundMask;
+    private bool isGrounded;
 
     // debug mode
+    [Header("")]
     [SerializeField] private bool debugMode;
+
+    // start function
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -37,7 +45,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            // rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.velocity = Vector3.up * jumpForce;
         }
     }
 }
