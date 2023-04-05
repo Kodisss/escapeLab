@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input == Vector3.zero) return; // this is used so the player doesn't default to a looking position after moving
 
-        var rot = Quaternion.LookRotation(input.ToIso(), Vector3.up); // gathers the rotation from controller inputs and offsets it by 45° with the ToIso function
+        var rot = Quaternion.LookRotation(input.ToIso().ToLook(), Vector3.up); // gathers the rotation from controller inputs and offsets it by 45° with the ToIso function
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnSpeed * Time.deltaTime); // applies the rotation to the player at a given speed
     }
 
