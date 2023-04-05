@@ -8,6 +8,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+
+    // animator
     private Animator animator;
     private Vector3 lastPosition;
 
@@ -77,8 +79,10 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
     }
 
+    // update the animator with the velocity of the character rigidbody
     private void updateAnimator()
     {
+        // in isometric view we calculate the velocity with the last position
         Vector3 currentPosition = transform.position;
         Vector3 movementVector = currentPosition - lastPosition;
         float velocity = movementVector.magnitude / Time.deltaTime;

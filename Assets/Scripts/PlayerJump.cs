@@ -8,6 +8,8 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerJump : MonoBehaviour
 {
     private Rigidbody rb;
+
+    // animator
     private Animator animator;
 
     // variables to jump
@@ -39,7 +41,7 @@ public class PlayerJump : MonoBehaviour
     private bool CheckGrounded()
     {
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundMask);
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrounded", isGrounded); // update the animator's bool
         return isGrounded;
     }
 
