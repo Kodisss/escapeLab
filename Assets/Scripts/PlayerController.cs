@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator animator;
+    private Vector3 lastPosition;
 
     // variables to move
     [Header("Moving Variables")]
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     // start function
     private void Start()
     {
+        lastPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
@@ -44,12 +46,13 @@ public class PlayerController : MonoBehaviour
     {
         GatherInput();
         Look();
-        Dash();
+        Dash();        
     }
 
     private void FixedUpdate()
     {
         Move();
+        updateAnimator();
     }
 
     // gets the input from whatever controller
@@ -71,6 +74,15 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+    }
+
+    private void updateAnimator()
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 movementVector = currentPosition - lastPosition;
+        float velocity = movementVector.magnitude / Time.deltaTime;
+        animator.SetFloat("Velocity", velocity);
+        lastPosition = currentPosition;
     }
 
     // dash function

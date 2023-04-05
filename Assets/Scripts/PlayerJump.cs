@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerJump : MonoBehaviour
 {
     private Rigidbody rb;
+    private Animator animator;
 
     // variables to jump
     [Header("Jumping Variables")]
@@ -25,6 +26,7 @@ public class PlayerJump : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,13 +38,15 @@ public class PlayerJump : MonoBehaviour
     // checks if the player is at 1.1 distance of the ground
     private bool CheckGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, 0.1f, groundMask);
+        bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundMask);
+        animator.SetBool("isGrounded", isGrounded);
+        return isGrounded;
     }
 
     // check if the jump button is pressed and if player is grounded then jump
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && CheckGrounded())
+        if (CheckGrounded() && Input.GetButtonDown("Jump"))
         {
             // rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             rb.velocity = Vector3.up * jumpForce;

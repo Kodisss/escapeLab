@@ -369,6 +369,22 @@ PrefabInstance:
       propertyPath: debugMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8703357492192476839, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703357492192476856, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703357492192476856, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703357492192476856, guid: 473815cf29320e1409297509d0c978f6, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473815cf29320e1409297509d0c978f6, type: 3}
 --- !u!1 &553822046
