@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // variables to move
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float runSpeed = 10f;
+    [SerializeField] private float runSpeed = 13f;
     [SerializeField] private float turnSpeed = 1080f;
     [SerializeField] private bool runHold = false;
     private Vector3 input;
@@ -99,11 +99,11 @@ public class PlayerController : MonoBehaviour
     {
         if (run)
         {
-            rb.MovePosition(transform.position + input.ToIso() * runSpeed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+            rb.MovePosition(transform.position + input.normalized.ToIso() * runSpeed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
         }
         else
         {
-            rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+            rb.MovePosition(transform.position + input.normalized.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
         }
     }
 
