@@ -97,8 +97,6 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             canMove = false;
 
-            
-
             // Variables to track Cooldown
             dashStartTime = Time.time;
             lastDashTime = Time.time;
@@ -118,12 +116,8 @@ public class PlayerController : MonoBehaviour
         // If dashing, move the player in the dash direction
         if (isDashing && Time.time - dashStartTime < dashDuration)
         {
-            //animator.SetBool("Dash", true);
-            rb.velocity = transform.forward * dashDistance / dashDuration;
-            //animator.SetBool("Dash", false);
-            //StartCoroutine(StopDashAfterDelay());
+            rb.velocity = transform.forward.ToInvLook() * dashDistance / dashDuration;
             if (debugMode) Debug.Log("Dashed");
-            
         }
         else
         {
