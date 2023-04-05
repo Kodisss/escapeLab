@@ -589,7 +589,6 @@ GameObject:
   - component: {fileID: 8703357492192476839}
   - component: {fileID: 8703357492192476856}
   - component: {fileID: 4193860007310392323}
-  - component: {fileID: 2785996246157768676}
   m_Layer: 0
   m_Name: cyberpunk
   m_TagString: Player
@@ -684,24 +683,6 @@ MonoBehaviour:
   dashDuration: 0.1
   dashCooldown: 1.5
   maxDashes: 2
-  debugMode: 0
---- !u!114 &2785996246157768676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694126739177635428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 567fb238a92996f428a2b2b3c142aa43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 6
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheck: {fileID: 8022177029787236}
   debugMode: 0
 --- !u!1 &2712919217347136237
 GameObject:
