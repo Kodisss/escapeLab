@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -16,7 +17,9 @@ public class PlayerController : MonoBehaviour
     // variables to move
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float turnSpeed = 1080f;
+    [SerializeField] private bool runHold = false;
     private Vector3 input;
     private bool canMove = true;
 
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 1.5f;
     [SerializeField] private int maxDashes = 2;
 
+    private bool run = false;
     private bool isDashing = false;
     private bool isCooldown = false;
     private float dashStartTime = 0f;
@@ -62,6 +66,23 @@ public class PlayerController : MonoBehaviour
     private void GatherInput()
     {
         if (canMove) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+        
+        // toggle or hold to run
+        if (runHold)
+        {
+            run = Input.GetButton("Run");
+        }
+        else
+        {
+            if (Input.GetButtonDown("Run") && !run)
+            {
+                run = true;
+            }
+            else if (Input.GetButtonDown("Run"))
+            {
+                run = false;
+            }
+        } 
     }
 
     // makes the player look towards the direction of the movement
@@ -76,7 +97,14 @@ public class PlayerController : MonoBehaviour
     // makes the player move
     private void Move()
     {
-        rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+        if (run)
+        {
+            rb.MovePosition(transform.position + input.ToIso() * runSpeed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+        }
+        else
+        {
+            rb.MovePosition(transform.position + input.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
+        }
     }
 
     // update the animator with the velocity of the character rigidbody
@@ -95,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         isCooldown = Time.time - lastDashTime > dashCooldown; // tracks the cooldown
 
-        if (Input.GetButtonDown("Fire2") && (isCooldown || currentDashes < maxDashes))
+        if (Input.GetButtonDown("Dash") && (isCooldown || currentDashes < maxDashes))
         {
             // Allow dashing and kills the input gathering
             isDashing = true;
