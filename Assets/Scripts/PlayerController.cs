@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDistance = 3f;
     [SerializeField] private float dashDuration = 0.1f;
     [SerializeField] private float dashCooldown = 1.5f;
+    [SerializeField] private int maxDashes = 2;
 
     private bool isDashing = false;
+    private bool isCooldown = false;
     private float dashStartTime = 0f;
     private float lastDashTime = -999f;
+    private int currentDashes = 0;
 
     // debug mode
     [Header("")]
@@ -73,26 +76,47 @@ public class PlayerController : MonoBehaviour
     // dash function
     private void Dash()
     {
-        if (Input.GetButtonDown("Fire2") && Time.time - lastDashTime > dashCooldown)
+        isCooldown = Time.time - lastDashTime > dashCooldown; // tracks the cooldown
+
+        if (Input.GetButtonDown("Fire2") && (isCooldown || currentDashes < maxDashes))
         {
+            // Allow dashing and kills the input gathering
             isDashing = true;
             canMove = false;
+
+            // Variables to track Cooldown
             dashStartTime = Time.time;
             lastDashTime = Time.time;
 
-            rb.velocity = Vector3.Scale(rb.velocity, new Vector3(0, 1, 0));
+            currentDashes++; // counts the number of dashes
+
+            rb.velocity = Vector3.Scale(rb.velocity, new Vector3(0, 1, 0)); // sets velocity to 0 before dashing so it doesn't accelerate weirdly
+            if (debugMode) Debug.Log("Tried to Dash");
+        }
+
+        if (isCooldown && currentDashes == maxDashes)
+        {
+            currentDashes = 0;
+            if (debugMode) Debug.Log("Reset Dash Count");
         }
 
         // If dashing, move the player in the dash direction
         if (isDashing && Time.time - dashStartTime < dashDuration)
         {
             rb.velocity = transform.forward * dashDistance / dashDuration;
+            if (debugMode) Debug.Log("Dashed");
         }
         else
         {
+            if (isCooldown)
+            {
+                currentDashes = 0;
+                if (debugMode) Debug.Log("Reset Dash Count");
+            }
+            // resets everything so we can dash again
             isDashing = false;
             canMove = true;
-            rb.velocity = Vector3.Scale(rb.velocity, new Vector3(0,1,0));
+            rb.velocity = Vector3.Scale(rb.velocity, new Vector3(0,1,0)); // sets velocity to 0 after dashing so we can't build up momentum
         }
     }
 }
