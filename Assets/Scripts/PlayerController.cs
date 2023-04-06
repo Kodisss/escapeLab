@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDistance = 3f;
     [SerializeField] private float dashDuration = 0.1f;
     [SerializeField] private float dashCooldown = 1.5f;
-    [SerializeField] private int maxDashes = 2;
+    [SerializeField] private int maxDashes = 0;
 
     private bool run = false;
     private bool isDashing = false;

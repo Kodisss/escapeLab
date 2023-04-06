@@ -678,11 +678,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  runSpeed: 13
   turnSpeed: 1080
-  dashDistance: 3
-  dashDuration: 0.1
+  runHold: 0
+  dashDistance: 6
+  dashDuration: 0.2
   dashCooldown: 1.5
-  maxDashes: 2
+  maxDashes: 0
   debugMode: 0
 --- !u!1 &2712919217347136237
 GameObject:

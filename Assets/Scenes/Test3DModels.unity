@@ -382,18 +382,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.014715696
       objectReference: {fileID: 0}
-    - target: {fileID: 4193860007310392323, guid: 473815cf29320e1409297509d0c978f6, type: 3}
-      propertyPath: runSpeed
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193860007310392323, guid: 473815cf29320e1409297509d0c978f6, type: 3}
-      propertyPath: dashDistance
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193860007310392323, guid: 473815cf29320e1409297509d0c978f6, type: 3}
-      propertyPath: dashDuration
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5686251953277030540, guid: 473815cf29320e1409297509d0c978f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
