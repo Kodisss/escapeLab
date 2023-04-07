@@ -8,6 +8,11 @@ public class GameScript : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
 
+    private void Start()
+    {
+        gameOverScreen.SetActive(false);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // respawn button

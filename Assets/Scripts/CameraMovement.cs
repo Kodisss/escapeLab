@@ -19,7 +19,15 @@ public class CameraMovement : MonoBehaviour
     private float precision = 0.001f;
 
     private Vector3 input; // saves the user's inputs
-    private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function 
+    private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function
+
+    // death gestion
+    private DeathManager death;
+
+    private void Start()
+    {
+        death = GameObject.FindGameObjectWithTag("Player").GetComponent<DeathManager>();
+    }
 
     private void Update()
     {
@@ -35,7 +43,7 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         // game loop to do stuff based on the information we got from Update
-        MoveCamera();
+        if (death.GetAlive()) MoveCamera();
     }
 
     // does the camera bonk a wall and in wich direction?
