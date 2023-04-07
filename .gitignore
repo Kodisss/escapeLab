@@ -74,6 +74,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+#Ignore TextMeshPro
+/Assets/TextMesh Pro
+
 #Imported Package from Unity Store
 /Assets/_Creepy_Cat
 /Assets/Sci-Fi Styled Modular Pack

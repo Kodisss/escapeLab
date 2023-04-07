@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        updateAnimator();
+        UpdateAnimator();
     }
 
     // gets the input from whatever controller
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // update the animator with the velocity of the character rigidbody
-    private void updateAnimator()
+    private void UpdateAnimator()
     {
         // in isometric view we calculate the velocity with the last position
         Vector3 currentPosition = transform.position;
