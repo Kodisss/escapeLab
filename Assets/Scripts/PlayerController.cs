@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    private DeathManager death;
+    private GameScript game; // communicate with game
 
     // animator
     private Animator animator;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         lastPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        death = GetComponent<DeathManager>();
+        game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
     }
 
     private void Update()
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     // gets the input from whatever controller
     private void GatherInput()
     {
-        if (canMove && death.GetAlive()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+        if (canMove && game.GetAlive()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
         
         // toggle or hold to run
         if (runHold)

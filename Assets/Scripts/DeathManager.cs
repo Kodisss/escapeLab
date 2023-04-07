@@ -5,7 +5,6 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     private GameScript game;
-    private bool alive = true;
 
     // Start is called before the first frame update
     private void Start()
@@ -18,12 +17,6 @@ public class DeathManager : MonoBehaviour
     {
         // check if player is alive
         IsAlive();
-        if (!alive) game.GameOver();
-    }
-
-    public bool GetAlive()
-    {
-        return alive;
     }
 
     // tracks everything that kills the player
@@ -31,7 +24,7 @@ public class DeathManager : MonoBehaviour
     {
         if (transform.position.y < -7.0f)
         {
-            alive = false;
+            game.SetAlive(false);
         }
     }
 }
