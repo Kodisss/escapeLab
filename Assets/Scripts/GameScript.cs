@@ -10,11 +10,11 @@ public class GameScript : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // respawn button
     }
 
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
+        gameOverScreen.SetActive(true); // display Game Over Screen
     }
 }
