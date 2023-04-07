@@ -73,3 +73,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#Imported Package from Unity Store
+/Assets/_Creepy_Cat
+/Assets/Sci-Fi Styled Modular Pack
