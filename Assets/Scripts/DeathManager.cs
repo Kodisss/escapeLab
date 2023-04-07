@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     private GameScript game;
+    public bool alive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +17,14 @@ public class DeathManager : MonoBehaviour
     void Update()
     {
         IsAlive();
+        if (!alive) game.GameOver();
     }
 
     private void IsAlive()
     {
-        if (transform.position.y < -1.0f)
+        if (transform.position.y < -7.0f)
         {
-            game.GameOver();
+            alive = false;
         }
     }
 }
