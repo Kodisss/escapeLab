@@ -16,7 +16,7 @@ public class Digicode : MonoBehaviour
     private bool playerInRange = false;
     private bool inMenu = false;
 
-    private string password = "4895";
+    private string password = string.Empty;
     private string inputPassword = string.Empty;
 
     private bool initializeComputer = true;
@@ -27,6 +27,7 @@ public class Digicode : MonoBehaviour
         game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
         computerLight.SetActive(false);
         this.GetComponent<Collider>().enabled = false;
+        password = game.GetPassword();
     }
 
     // Update is called once per frame

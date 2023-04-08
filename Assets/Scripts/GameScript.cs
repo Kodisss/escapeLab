@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameScript : MonoBehaviour
 {
@@ -10,13 +11,18 @@ public class GameScript : MonoBehaviour
     [SerializeField] private GameObject lights;
     [SerializeField] private GameObject digicode;
     [SerializeField] private GameObject key;
+    [SerializeField] private GameObject answerDigicode;
+    [SerializeField] private TextMeshProUGUI textPassword;
 
     private bool alive = true;
     private bool isDigicode = false;
     private bool digicodeDoor = false;
     private bool lightsOn = true;
 
-    private bool hasKey = false;
+    private bool digicodeVisible = false;
+    [SerializeField] private string password = "4895";
+
+    [SerializeField] private bool hasKey = false;
 
     private bool canControl = true;
 
@@ -31,6 +37,7 @@ public class GameScript : MonoBehaviour
         key.SetActive(false);
         digicodeDoor = false;
         canControl = true;
+        textPassword.text = password;
     }
 
     // game loop
@@ -38,6 +45,7 @@ public class GameScript : MonoBehaviour
     {
         if (!alive) GameOver();
         digicode.SetActive(isDigicode);
+        answerDigicode.SetActive(digicodeVisible);
         isControlOn();
     }
 
@@ -56,6 +64,11 @@ public class GameScript : MonoBehaviour
     public bool GetKeyStatus()
     {
         return hasKey;
+    }
+
+    public string GetPassword()
+    {
+        return password;
     }
 
     /////////////////////////// GAME METHODS ///////////////////////////
@@ -102,10 +115,15 @@ public class GameScript : MonoBehaviour
         if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
     }
 
+    public void ShowDigicode(bool input)
+    {
+        digicodeVisible = input;
+    }
+
     // CONTROLS GESTION
     private void isControlOn()
     {
-        if (!alive || isDigicode) canControl = false; else canControl = true;
+        if (!alive || isDigicode || digicodeVisible) canControl = false; else canControl = true;
     } 
 
     // KEY GESTION
