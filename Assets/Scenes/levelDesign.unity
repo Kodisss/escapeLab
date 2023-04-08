@@ -3500,7 +3500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 286988117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &286988117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3934,7 +3946,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 323568336}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &323568336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5386,7 +5410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 457045319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &457045319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5508,7 +5544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 465555657}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &465555657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8359,7 +8407,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 689942551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &689942551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10914,7 +10974,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 957989816}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &957989816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11153,7 +11225,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 980525115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &980525115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14665,13 +14749,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1884126258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18560,7 +18644,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1761742879}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903611586}
+        m_TargetAssemblyTypeName: Digicode, Assembly-CSharp
+        m_MethodName: Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1761742879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20121,11 +20217,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 498868, guid: f18932879bb23b84ca5370b65419ee41, type: 3}
   m_PrefabInstance: {fileID: 1880898845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1884126258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6097328809902984276, guid: ea0df2afab060d744bf45533b6902aea, type: 3}
-  m_PrefabInstance: {fileID: 6097328808565190758}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1893654569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20377,6 +20468,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7195976410645943703, guid: ea0df2afab060d744bf45533b6902aea, type: 3}
   m_PrefabInstance: {fileID: 6097328808565190758}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903611586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6097328809595113925, guid: ea0df2afab060d744bf45533b6902aea, type: 3}
+  m_PrefabInstance: {fileID: 6097328808565190758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1e6a681479da64b96b46ffb88673cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1910510604
 PrefabInstance:
   m_ObjectHideFlags: 0
