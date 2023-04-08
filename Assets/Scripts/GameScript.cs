@@ -9,6 +9,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject lights;
     [SerializeField] private GameObject digicode;
+    [SerializeField] private Animator digicodeDoorAnimator;
 
     private bool alive = true;
     private bool isDigicode = false;
@@ -94,5 +95,6 @@ public class GameScript : MonoBehaviour
     {
         digicodeDoor = true;
         if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
+        digicodeDoorAnimator.SetTrigger("digicodeDoorOpened");
     }
 }
