@@ -14,6 +14,8 @@ public class GameScript : MonoBehaviour
     private bool isDigicode = false;
     private bool digicodeDoor = false;
 
+    private bool canControl = true;
+
     [SerializeField] private bool debugMode = false;
 
     // game initialization
@@ -23,6 +25,7 @@ public class GameScript : MonoBehaviour
         lights.SetActive(true);
         digicode.SetActive(false);
         digicodeDoor = false;
+        canControl = true;
     }
 
     // game loop
@@ -35,6 +38,11 @@ public class GameScript : MonoBehaviour
     }
 
     ///////////////////// GETTERS AND SETTERS ////////////////////////
+
+    public bool GetControl()
+    {
+        return canControl;
+    }
 
     public bool GetAlive()
     {
@@ -85,6 +93,6 @@ public class GameScript : MonoBehaviour
     public void OpenDigicodeDoor()
     {
         digicodeDoor = true;
-        if(debugMode) Debug.Log("I OPENED THE DOOR");
+        if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
     }
 }
