@@ -8,22 +8,33 @@ public class GameScript : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject lights;
+    [SerializeField] private GameObject digicode;
+
     private bool alive = true;
+    private bool isDigicode = false;
+    private bool digicodeDoor = false;
+
+    [SerializeField] private bool debugMode = false;
 
     // game initialization
     private void Start()
     {
         gameOverScreen.SetActive(false);
         lights.SetActive(true);
+        digicode.SetActive(false);
+        digicodeDoor = false;
     }
 
     // game loop
     private void Update()
     {
         if (!alive) GameOver();
+        digicode.SetActive(isDigicode);
+
+        if (debugMode) Debug.Log(isDigicode);
     }
 
-    /// GETTERS AND SETTERS ///
+    ///////////////////// GETTERS AND SETTERS ////////////////////////
 
     public bool GetAlive()
     {
@@ -35,20 +46,45 @@ public class GameScript : MonoBehaviour
         alive = input;
     }
 
-    /// GAME METHODS ///
+    public bool GetDigicode()
+    {
+        return isDigicode;
+    }
 
-    public void RestartGame()
+    public void SetDigicode(bool input)
+    {
+        isDigicode = input;
+    }
+
+    /////////////////////////// GAME METHODS ///////////////////////////
+
+    // GAME OVER AND GAME RESTART GESTION
+    private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // respawn button
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         gameOverScreen.SetActive(true); // display Game Over Screen
     }
 
-    public void DisableLights()
+
+    // LIGHTS GESTION
+    private void DisableLights()
     {
         lights.SetActive(false);
+    }
+
+    // DIGICODE GESTION
+    public bool GetDigicodeDoor()
+    {
+        return digicodeDoor;
+    }
+
+    public void OpenDigicodeDoor()
+    {
+        digicodeDoor = true;
+        if(debugMode) Debug.Log("I OPENED THE DOOR");
     }
 }
