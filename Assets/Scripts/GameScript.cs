@@ -64,6 +64,7 @@ public class GameScript : MonoBehaviour
 
 
     // LIGHTS GESTION
+    [ContextMenu("Disable Lights")]
     public void DisableLights()
     {
         lights.SetActive(false);
