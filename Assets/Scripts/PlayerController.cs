@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     // gets the input from whatever controller
     private void GatherInput()
     {
-        if (canMove && game.GetAlive() && !game.GetDigicode()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+        if (canMove && game.GetControl()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
         
         // toggle or hold to run
         if (runHold)
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(transform.position + input.normalized.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
         }
-        if(game.GetDigicode()) rb.MovePosition(transform.position);
+        if(!game.GetControl()) rb.MovePosition(transform.position);
     }
 
     // update the animator with the velocity of the character rigidbody
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
     {
         isCooldown = Time.time - lastDashTime > dashCooldown; // tracks the cooldown
 
-        if (Input.GetButtonDown("Dash") && (isCooldown || currentDashes < maxDashes) && !game.GetDigicode())
+        if (Input.GetButtonDown("Dash") && (isCooldown || currentDashes < maxDashes) && game.GetControl())
         {
             // Allow dashing and kills the input gathering
             isDashing = true;

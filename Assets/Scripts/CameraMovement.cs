@@ -43,7 +43,7 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         // game loop to do stuff based on the information we got from Update
-        if (game.GetAlive() && !game.GetDigicode()) MoveCamera();
+        if (game.GetControl()) MoveCamera();
     }
 
     // does the camera bonk a wall and in wich direction?

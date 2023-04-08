@@ -34,7 +34,7 @@ public class GameScript : MonoBehaviour
     {
         if (!alive) GameOver();
         digicode.SetActive(isDigicode);
-
+        isControlOn();
         if (debugMode) Debug.Log(isDigicode);
     }
 
@@ -45,19 +45,9 @@ public class GameScript : MonoBehaviour
         return canControl;
     }
 
-    public bool GetAlive()
-    {
-        return alive;
-    }
-
     public void SetAlive(bool input)
     {
         alive = input;
-    }
-
-    public bool GetDigicode()
-    {
-        return isDigicode;
     }
 
     public void SetDigicode(bool input)
@@ -97,4 +87,10 @@ public class GameScript : MonoBehaviour
         if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
         digicodeDoorAnimator.SetTrigger("digicodeDoorOpened");
     }
+
+    // CONTROLS GESTION
+    private void isControlOn()
+    {
+        if (!alive || isDigicode) canControl = false; else canControl = true;
+    } 
 }
