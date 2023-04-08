@@ -85,5 +85,6 @@ public class GameScript : MonoBehaviour
     public void OpenDigicodeDoor()
     {
         digicodeDoor = true;
+        if(debugMode) Debug.Log("I OPENED THE DOOR");
     }
 }

@@ -316,9 +316,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7195976410645943703}
-  - component: {fileID: 6097328809909213988}
   - component: {fileID: 6097328809889922726}
   - component: {fileID: 6097328809595113922}
+  - component: {fileID: 6097328809909213988}
   - component: {fileID: 6097328809595113925}
   m_Layer: 3
   m_Name: DigicodeWallWithComputer
@@ -350,19 +350,6 @@ RectTransform:
   m_AnchoredPosition: {x: 18, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &6097328809909213988
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6097328809902984276}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 0.47500858}
-  m_Center: {x: 0, y: 2, z: 0.23750414}
 --- !u!205 &6097328809889922726
 LODGroup:
   m_ObjectHideFlags: 0
@@ -399,6 +386,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 6}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!65 &6097328809909213988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097328809902984276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4, z: 0.47500858}
+  m_Center: {x: 0, y: 2, z: 0.23750414}
 --- !u!114 &6097328809595113925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 0}
+  interactUI: {fileID: 8126386383369214012}
   debugMode: 1
 --- !u!1 &8126386383369214012
 GameObject:
