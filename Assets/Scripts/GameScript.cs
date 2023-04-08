@@ -37,17 +37,17 @@ public class GameScript : MonoBehaviour
 
     /// GAME METHODS ///
 
-    public void RestartGame()
+    private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // respawn button
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         gameOverScreen.SetActive(true); // display Game Over Screen
     }
 
-    public void DisableLights()
+    private void DisableLights()
     {
         lights.SetActive(false);
     }
