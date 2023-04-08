@@ -9,11 +9,11 @@ public class GameScript : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject lights;
     [SerializeField] private GameObject digicode;
-    [SerializeField] private Animator digicodeDoorAnimator;
 
     private bool alive = true;
     private bool isDigicode = false;
     private bool digicodeDoor = false;
+    private bool lightsOn = true;
 
     private bool canControl = true;
 
@@ -35,7 +35,6 @@ public class GameScript : MonoBehaviour
         if (!alive) GameOver();
         digicode.SetActive(isDigicode);
         isControlOn();
-        if (debugMode) Debug.Log(isDigicode);
     }
 
     ///////////////////// GETTERS AND SETTERS ////////////////////////
@@ -48,11 +47,6 @@ public class GameScript : MonoBehaviour
     public void SetAlive(bool input)
     {
         alive = input;
-    }
-
-    public void SetDigicode(bool input)
-    {
-        isDigicode = input;
     }
 
     /////////////////////////// GAME METHODS ///////////////////////////
@@ -70,9 +64,15 @@ public class GameScript : MonoBehaviour
 
 
     // LIGHTS GESTION
-    private void DisableLights()
+    public void DisableLights()
     {
         lights.SetActive(false);
+        lightsOn = false;
+    }
+
+    public bool GetLights()
+    {
+        return lightsOn;
     }
 
     // DIGICODE GESTION
@@ -81,11 +81,15 @@ public class GameScript : MonoBehaviour
         return digicodeDoor;
     }
 
+    public void SetDigicode(bool input)
+    {
+        isDigicode = input;
+    }
+
     public void OpenDigicodeDoor()
     {
         digicodeDoor = true;
         if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
-        digicodeDoorAnimator.SetTrigger("digicodeDoorOpened");
     }
 
     // CONTROLS GESTION

@@ -8,6 +8,7 @@ public class Digicode : MonoBehaviour
 {
     [SerializeField] private Collider playerCollider;
     [SerializeField] private GameObject interactUI;
+    [SerializeField] private GameObject computerLight;
     private GameScript game;
 
     [SerializeField] bool debugMode = false;
@@ -18,17 +19,33 @@ public class Digicode : MonoBehaviour
     private string password = "4895";
     private string inputPassword = string.Empty;
 
+    private bool initializeComputer = true;
+
     private void Start()
     {
         interactUI.SetActive(false);
         game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
+        computerLight.SetActive(false);
+        this.GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        DisplayDigicode();
-        if (inMenu) WorkDigicode();
+        if (!game.GetLights())
+        {
+            if(initializeComputer) Initialization();
+            
+            DisplayDigicode();
+            if (inMenu) WorkDigicode();
+        }
+    }
+
+    private void Initialization()
+    {
+        computerLight.SetActive(true);
+        this.GetComponent<Collider>().enabled = true;
+        initializeComputer = false;
     }
 
     // display message when close
@@ -65,7 +82,7 @@ public class Digicode : MonoBehaviour
         if (!(password?[0..Math.Min(password.Length, inputPassword.Length)]).Equals(inputPassword)) // password wrong
         {
             inputPassword = string.Empty;
-            Debug.Log("Wrong Password");
+            if(debugMode) Debug.Log("Wrong Password");
         }
         else
         {
@@ -94,6 +111,7 @@ public class Digicode : MonoBehaviour
         inMenu = false;
         this.GetComponent<Collider>().enabled = false;
         interactUI.SetActive(false);
+        computerLight.SetActive(false);
         this.enabled = false;
     }
 }
