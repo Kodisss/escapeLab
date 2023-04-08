@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     // gets the input from whatever controller
     private void GatherInput()
     {
-        if (canMove && game.GetAlive()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+        if (canMove && game.GetAlive() && !game.GetDigicode()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
         
         // toggle or hold to run
         if (runHold)
