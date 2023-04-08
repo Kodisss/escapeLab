@@ -9,11 +9,14 @@ public class GameScript : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject lights;
     [SerializeField] private GameObject digicode;
+    [SerializeField] private GameObject key;
 
     private bool alive = true;
     private bool isDigicode = false;
     private bool digicodeDoor = false;
     private bool lightsOn = true;
+
+    private bool hasKey = false;
 
     private bool canControl = true;
 
@@ -25,6 +28,7 @@ public class GameScript : MonoBehaviour
         gameOverScreen.SetActive(false);
         lights.SetActive(true);
         digicode.SetActive(false);
+        key.SetActive(false);
         digicodeDoor = false;
         canControl = true;
     }
@@ -47,6 +51,11 @@ public class GameScript : MonoBehaviour
     public void SetAlive(bool input)
     {
         alive = input;
+    }
+
+    public bool GetKeyStatus()
+    {
+        return hasKey;
     }
 
     /////////////////////////// GAME METHODS ///////////////////////////
@@ -98,4 +107,11 @@ public class GameScript : MonoBehaviour
     {
         if (!alive || isDigicode) canControl = false; else canControl = true;
     } 
+
+    // KEY GESTION
+    public void GotKey()
+    {
+        hasKey = true;
+        key.SetActive(true);
+    }
 }
