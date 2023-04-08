@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(transform.position + input.normalized.ToIso() * speed * Time.deltaTime); // use the input offseted by 45° with ToIso and make the player move to given speed
         }
+        if(game.GetDigicode()) rb.MovePosition(transform.position);
     }
 
     // update the animator with the velocity of the character rigidbody
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
     {
         isCooldown = Time.time - lastDashTime > dashCooldown; // tracks the cooldown
 
-        if (Input.GetButtonDown("Dash") && (isCooldown || currentDashes < maxDashes))
+        if (Input.GetButtonDown("Dash") && (isCooldown || currentDashes < maxDashes) && !game.GetDigicode())
         {
             // Allow dashing and kills the input gathering
             isDashing = true;

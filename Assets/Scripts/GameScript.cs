@@ -12,6 +12,7 @@ public class GameScript : MonoBehaviour
 
     private bool alive = true;
     private bool isDigicode = false;
+    private bool digicodeDoor = false;
 
     [SerializeField] private bool debugMode = false;
 
@@ -21,6 +22,7 @@ public class GameScript : MonoBehaviour
         gameOverScreen.SetActive(false);
         lights.SetActive(true);
         digicode.SetActive(false);
+        digicodeDoor = false;
     }
 
     // game loop
@@ -75,5 +77,13 @@ public class GameScript : MonoBehaviour
     }
 
     // DIGICODE GESTION
-    
+    public bool GetDigicodeDoor()
+    {
+        return digicodeDoor;
+    }
+
+    public void OpenDigicodeDoor()
+    {
+        digicodeDoor = true;
+    }
 }

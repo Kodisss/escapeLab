@@ -22,26 +22,27 @@ public class Digicode : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         DisplayDigicode();
+        if (inMenu) WorkDigicode();
     }
 
-    void OnTriggerEnter(Collider playerCollider)
+    private void OnTriggerEnter(Collider playerCollider)
     {
         interactUI.SetActive(true);
         playerInRange = true;
         if (debugMode) Debug.Log("PLAYER IN RANGE OMG");
     }
 
-    void OnTriggerExit(Collider playerCollider)
+    private void OnTriggerExit(Collider playerCollider)
     {
         interactUI.SetActive(false);
         playerInRange = false;
         if (debugMode) Debug.Log("PLAYER OUT OF RANGE NOOOO");
     }
 
-    void DisplayDigicode()
+    private void DisplayDigicode()
     {
         if (playerInRange && Input.GetButtonDown("Interact") && !inMenu)
         {
@@ -55,5 +56,10 @@ public class Digicode : MonoBehaviour
             inMenu = false;
             if (debugMode) Debug.Log("AM WORKING FOR NO REASON");
         }
+    }
+
+    private void WorkDigicode()
+    {
+
     }
 }
