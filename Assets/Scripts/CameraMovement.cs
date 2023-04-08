@@ -7,6 +7,9 @@ public class CameraMovement : MonoBehaviour
     // variables
     [SerializeField] private Transform target; // target to be followed
 
+    // Communicate With GameManager
+    private GameScript game;
+
     [SerializeField] private float smoothTime; // adjusts the smoothness of the camera following
     [SerializeField] private float offset; // offset to make the camera a little be early so the user can see where they go
     [SerializeField] private LayerMask mask; // mask of what shoud bonk the camera
@@ -19,7 +22,12 @@ public class CameraMovement : MonoBehaviour
     private float precision = 0.001f;
 
     private Vector3 input; // saves the user's inputs
-    private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function 
+    private Vector3 currentVelocity = Vector3.zero; // a variable set to zero to use the smoothDamp function
+
+    private void Start()
+    {
+        game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
+    }
 
     private void Update()
     {
@@ -35,7 +43,7 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         // game loop to do stuff based on the information we got from Update
-        MoveCamera();
+        if (game.GetAlive()) MoveCamera();
     }
 
     // does the camera bonk a wall and in wich direction?

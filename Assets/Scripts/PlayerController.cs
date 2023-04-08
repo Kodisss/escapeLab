@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+    private GameScript game; // communicate with game
 
     // animator
     private Animator animator;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         lastPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
     }
 
     private void Update()
@@ -59,13 +61,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        updateAnimator();
+        UpdateAnimator();
     }
 
     // gets the input from whatever controller
     private void GatherInput()
     {
-        if (canMove) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
+        if (canMove && game.GetAlive()) input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")); // Raw makes it non analogical, wich is weird with a controller but removing it makes the keyboard controll laggy but seems to work anyway
         
         // toggle or hold to run
         if (runHold)
@@ -108,7 +110,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // update the animator with the velocity of the character rigidbody
-    private void updateAnimator()
+    private void UpdateAnimator()
     {
         // in isometric view we calculate the velocity with the last position
         Vector3 currentPosition = transform.position;
