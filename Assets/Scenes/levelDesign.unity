@@ -27853,6 +27853,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 912795049227856688, guid: ec475d7d0e15ebc4b905711ade53cb45, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 2111626502}
+    - target: {fileID: 1218591489332775805, guid: ec475d7d0e15ebc4b905711ade53cb45, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1407739731161177543, guid: ec475d7d0e15ebc4b905711ade53cb45, type: 3}
       propertyPath: m_Name
       value: KeyDesk
