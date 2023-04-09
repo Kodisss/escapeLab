@@ -15,7 +15,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textPassword;
 
     private bool alive = true;
-    private bool isDigicode = false;
+    private bool digicodeDisplayed = false;
     private bool digicodeDoor = false;
     private bool lightsOn = true;
 
@@ -35,6 +35,7 @@ public class GameScript : MonoBehaviour
         lights.SetActive(true);
         digicode.SetActive(false);
         key.SetActive(false);
+
         digicodeDoor = false;
         canControl = true;
         textPassword.text = password;
@@ -44,10 +45,10 @@ public class GameScript : MonoBehaviour
     private void Update()
     {
         if (!alive) GameOver();
-        digicode.SetActive(isDigicode);
+        digicode.SetActive(digicodeDisplayed);
         answerDigicode.SetActive(digicodeAnswerVisible);
         key.SetActive(hasKey);
-        isControlOn();
+        IsControlOn();
     }
 
     ///////////////////// GETTERS AND SETTERS ////////////////////////
@@ -105,9 +106,9 @@ public class GameScript : MonoBehaviour
         return digicodeDoor;
     }
 
-    public void SetDigicode(bool input)
+    public void DisplayDigicode(bool input)
     {
-        isDigicode = input;
+        digicodeDisplayed = input;
     }
 
     public void OpenDigicodeDoor()
@@ -116,15 +117,15 @@ public class GameScript : MonoBehaviour
         if(debugMode) Debug.Log("I OPENED THE DIGICODE DOOR");
     }
 
-    public void ShowDigicode(bool input)
+    public void ShowDigicodeAnswer(bool input)
     {
         digicodeAnswerVisible = input;
     }
 
     // CONTROLS GESTION
-    private void isControlOn()
+    private void IsControlOn()
     {
-        if (!alive || isDigicode || digicodeAnswerVisible) canControl = false; else canControl = true;
+        if (!alive || digicodeDisplayed || digicodeAnswerVisible) canControl = false; else canControl = true;
     }
 
     // KEY GESTION

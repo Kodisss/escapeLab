@@ -25,11 +25,11 @@ public class CodeGiver : InteractObjects
 
     protected override void Activate()
     {
-        if(game.GetKeyStatus()) game.ShowDigicode(true);
+        if(game.GetKeyStatus()) game.ShowDigicodeAnswer(true);
     }
 
     protected override void Deactivate()
     {
-        game.ShowDigicode(false);
+        game.ShowDigicodeAnswer(false);
     }
 }

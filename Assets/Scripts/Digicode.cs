@@ -39,12 +39,12 @@ public class Digicode : InteractObjects
 
     protected override void Activate()
     {
-        game.SetDigicode(true);
+        game.DisplayDigicode(true);
     }
 
     protected override void Deactivate()
     {
-        game.SetDigicode(false);
+        game.DisplayDigicode(false);
     }
 
     private void WorkDigicode()
@@ -77,7 +77,7 @@ public class Digicode : InteractObjects
     protected override void Disable()
     {
         game.OpenDigicodeDoor();
-        game.SetDigicode(false);
+        game.DisplayDigicode(false);
         computerLight.SetActive(false);
         base.Disable();
     }
