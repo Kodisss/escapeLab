@@ -8661,7 +8661,6 @@ MonoBehaviour:
   answerDigicode: {fileID: 506557234}
   textPassword: {fileID: 506557236}
   password: 4895
-  hasKey: 0
   debugMode: 0
 --- !u!1001 &622640511
 PrefabInstance:
