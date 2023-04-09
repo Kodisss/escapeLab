@@ -4,40 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Digicode : MonoBehaviour
+public class Digicode : InteractObjects
 {
-    [SerializeField] private Collider playerCollider;
-    [SerializeField] private GameObject interactUI;
     [SerializeField] private GameObject computerLight;
-    private GameScript game;
-
     [SerializeField] bool debugMode = false;
 
-    private bool playerInRange = false;
-    private bool inMenu = false;
-
-    private string password = string.Empty;
     private string inputPassword = string.Empty;
-
     private bool initializeComputer = true;
 
-    private void Start()
+    protected override void Start()
     {
-        interactUI.SetActive(false);
-        game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameScript>();
+        base.Start();
         computerLight.SetActive(false);
-        this.GetComponent<Collider>().enabled = false;
-        password = game.GetPassword();
+        GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!game.GetLights())
         {
             if(initializeComputer) Initialization();
-            
-            DisplayDigicode();
             if (inMenu) WorkDigicode();
         }
     }
@@ -49,50 +37,31 @@ public class Digicode : MonoBehaviour
         initializeComputer = false;
     }
 
-    // display message when close
-    private void OnTriggerEnter(Collider playerCollider)
+    protected override void Activate()
     {
-        interactUI.SetActive(true);
-        playerInRange = true;
+        game.SetDigicode(true);
     }
 
-    // deletes message when leaving
-    private void OnTriggerExit(Collider playerCollider)
+    protected override void Deactivate()
     {
-        interactUI.SetActive(false);
-        playerInRange = false;
-    }
-
-    // display digicode when interacting and close enough
-    private void DisplayDigicode()
-    {
-        if (playerInRange && Input.GetButtonDown("Interact") && !inMenu)
-        {
-            game.SetDigicode(true);
-            inMenu = true;
-        }
-        if (playerInRange && Input.GetButtonDown("Back") && inMenu)
-        {
-            game.SetDigicode(false);
-            inMenu = false;
-        }
+        game.SetDigicode(false);
     }
 
     private void WorkDigicode()
     {
-        if (!(password?[0..Math.Min(password.Length, inputPassword.Length)]).Equals(inputPassword)) // password wrong
+        if (!(game.GetPassword()?[0..Math.Min(game.GetPassword().Length, inputPassword.Length)]).Equals(inputPassword)) // password wrong
         {
             inputPassword = string.Empty;
             if(debugMode) Debug.Log("Wrong Password");
         }
         else
         {
-            if (password.Length == inputPassword.Length) // password correct
+            if (game.GetPassword().Length == inputPassword.Length) // password correct
             {
                 if (debugMode) Debug.Log("Correct Pasword");
 
                 // if password correct break everything
-                DisableDigicode();
+                Disable();
             }
         }
     }
@@ -105,14 +74,11 @@ public class Digicode : MonoBehaviour
     }
 
     // disable everything and the script
-    private void DisableDigicode()
+    protected override void Disable()
     {
         game.OpenDigicodeDoor();
         game.SetDigicode(false);
-        inMenu = false;
-        this.GetComponent<Collider>().enabled = false;
-        interactUI.SetActive(false);
         computerLight.SetActive(false);
-        this.enabled = false;
+        base.Disable();
     }
 }

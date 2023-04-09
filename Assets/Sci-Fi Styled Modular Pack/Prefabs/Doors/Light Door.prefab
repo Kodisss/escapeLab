@@ -374,3 +374,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5993176556070743722}
+  triggerName: light

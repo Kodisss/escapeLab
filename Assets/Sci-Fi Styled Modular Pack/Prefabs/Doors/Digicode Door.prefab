@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7773415778429249157}
+  triggerName: digicode
 --- !u!1 &7773415778419889901
 GameObject:
   m_ObjectHideFlags: 0

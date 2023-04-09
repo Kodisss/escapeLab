@@ -19,10 +19,10 @@ public class GameScript : MonoBehaviour
     private bool digicodeDoor = false;
     private bool lightsOn = true;
 
-    private bool digicodeVisible = false;
+    private bool digicodeAnswerVisible = false;
     [SerializeField] private string password = "4895";
 
-    [SerializeField] private bool hasKey = false;
+    private bool hasKey = false;
 
     private bool canControl = true;
 
@@ -45,7 +45,8 @@ public class GameScript : MonoBehaviour
     {
         if (!alive) GameOver();
         digicode.SetActive(isDigicode);
-        answerDigicode.SetActive(digicodeVisible);
+        answerDigicode.SetActive(digicodeAnswerVisible);
+        key.SetActive(hasKey);
         isControlOn();
     }
 
@@ -117,19 +118,19 @@ public class GameScript : MonoBehaviour
 
     public void ShowDigicode(bool input)
     {
-        digicodeVisible = input;
+        digicodeAnswerVisible = input;
     }
 
     // CONTROLS GESTION
     private void isControlOn()
     {
-        if (!alive || isDigicode || digicodeVisible) canControl = false; else canControl = true;
-    } 
+        if (!alive || isDigicode || digicodeAnswerVisible) canControl = false; else canControl = true;
+    }
 
     // KEY GESTION
-    public void GotKey()
+    [ContextMenu("Obtain Key")]
+    public void ObtainKey()
     {
         hasKey = true;
-        key.SetActive(true);
     }
 }
