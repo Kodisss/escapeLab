@@ -33,7 +33,7 @@ public class Digicode : InteractObjects
     private void Initialization()
     {
         computerLight.SetActive(true);
-        this.GetComponent<Collider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
         initializeComputer = false;
     }
 

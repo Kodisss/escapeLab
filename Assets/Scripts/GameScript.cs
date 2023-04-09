@@ -14,23 +14,26 @@ public class GameScript : MonoBehaviour
     [SerializeField] private GameObject answerDigicode;
     [SerializeField] private TextMeshProUGUI textPassword;
 
+    [SerializeField] private float timeLoopDuration = 90f;
+
     private bool alive = true;
     private bool digicodeDisplayed = false;
     private bool digicodeDoor = false;
     private bool lightsOn = true;
-
-    private bool digicodeAnswerVisible = false;
-    [SerializeField] private string password = "4895";
-
+    private bool timerDoorStatus = false;
     private bool hasKey = false;
-
     private bool canControl = true;
+    private bool digicodeAnswerVisible = false;
+
+    [SerializeField] private string password = "4895";
 
     [SerializeField] private bool debugMode = false;
 
     // game initialization
     private void Start()
     {
+        StartCoroutine(TimeLoop());
+
         gameOverScreen.SetActive(false);
         lights.SetActive(true);
         digicode.SetActive(false);
@@ -73,6 +76,11 @@ public class GameScript : MonoBehaviour
         return password;
     }
 
+    public bool GetTimerDoorStatus()
+    {
+        return timerDoorStatus;
+    }
+
     /////////////////////////// GAME METHODS ///////////////////////////
 
     // GAME OVER AND GAME RESTART GESTION
@@ -86,6 +94,14 @@ public class GameScript : MonoBehaviour
         gameOverScreen.SetActive(true); // display Game Over Screen
     }
 
+    // TIME LOOP
+    private IEnumerator TimeLoop()
+    {
+        yield return new WaitForSeconds(timeLoopDuration - 10f);
+        timerDoorStatus = true;
+        yield return new WaitForSeconds(10f);
+        alive = false;
+    }
 
     // LIGHTS GESTION
     [ContextMenu("Disable Lights")]
