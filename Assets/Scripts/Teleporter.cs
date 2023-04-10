@@ -19,10 +19,13 @@ public class Teleporter : InteractObjects
     // Update is called once per frame
     protected override void Update()
     {
-        base.Update();
         if (!game.GetLights())
         {
             if (initializeTeleporter) Initialization();
+            if (playerInRange && Input.GetButtonDown("Interact"))
+            {
+                Activate();
+            }
         }
     }
 

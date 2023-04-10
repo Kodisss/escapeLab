@@ -24,6 +24,7 @@ public class GameScript : MonoBehaviour
     private bool hasKey = false;
     private bool canControl = true;
     private bool digicodeAnswerVisible = false;
+    private bool simonDoor = false;
 
     [SerializeField] private string password = "4895";
 
@@ -149,5 +150,16 @@ public class GameScript : MonoBehaviour
     public void ObtainKey()
     {
         hasKey = true;
+    }
+
+    // SIMON SAYS DOOR GESTION
+    public void OpenSimonDoor()
+    {
+        simonDoor = true;
+    }
+
+    public bool IsSimonDoorOpened()
+    {
+        return simonDoor;
     }
 }
