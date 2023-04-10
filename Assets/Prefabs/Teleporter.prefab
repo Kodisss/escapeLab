@@ -244,8 +244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 0}
   interactUI: {fileID: 7460284088845202080}
-  Light: {fileID: 198930101351710517}
   player: {fileID: 0}
+  roomToTp: {fileID: 0}
+  textTp: {fileID: 266982288455413364}
+  roomName: 
 --- !u!1 &6195700757440023280
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Teleport to HUB
+  m_text: Teleport
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

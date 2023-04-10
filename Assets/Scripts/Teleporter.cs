@@ -1,43 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Teleporter : InteractObjects
 {
-    [SerializeField] private GameObject Light;
-    [SerializeField] private Transform player;
-
-    private bool initializeTeleporter = true;
+    [SerializeField] protected Transform player;
+    [SerializeField] protected Transform roomToTp;
+    [SerializeField] protected TextMeshProUGUI textTp;
+    [SerializeField] protected string roomName;
 
     protected override void Start()
     {
         base.Start();
-        Light.SetActive(false);
-        GetComponent<Collider>().enabled = false;
+        textTp.text = "Teleport to " + roomName;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        if (!game.GetLights())
+        if (playerInRange && Input.GetButtonDown("Interact"))
         {
-            if (initializeTeleporter) Initialization();
-            if (playerInRange && Input.GetButtonDown("Interact"))
-            {
-                Activate();
-            }
+            Activate();
         }
-    }
-
-    private void Initialization()
-    {
-        Light.SetActive(true);
-        GetComponent<Collider>().enabled = true;
-        initializeTeleporter = false;
     }
 
     protected override void Activate()
     {
-        player.position = Vector3.zero;
+        player.position = roomToTp.position;
     }
 }

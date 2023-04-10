@@ -8,6 +8,7 @@ using TMPro;
 public class GameScript : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject winningScreen;
     [SerializeField] private GameObject lights;
     [SerializeField] private GameObject digicode;
     [SerializeField] private GameObject key;
@@ -25,6 +26,7 @@ public class GameScript : MonoBehaviour
     private bool canControl = true;
     private bool digicodeAnswerVisible = false;
     private bool simonDoor = false;
+    private bool win = false;
 
     [SerializeField] private string password = "4895";
 
@@ -36,6 +38,7 @@ public class GameScript : MonoBehaviour
         StartCoroutine(TimeLoop());
 
         gameOverScreen.SetActive(false);
+        winningScreen.SetActive(false);
         lights.SetActive(true);
         digicode.SetActive(false);
         key.SetActive(false);
@@ -49,6 +52,7 @@ public class GameScript : MonoBehaviour
     private void Update()
     {
         if (!alive) GameOver();
+        if (win) WinScreen();
         digicode.SetActive(digicodeDisplayed);
         answerDigicode.SetActive(digicodeAnswerVisible);
         key.SetActive(hasKey);
@@ -82,6 +86,11 @@ public class GameScript : MonoBehaviour
         return timerDoorStatus;
     }
 
+    public float GetTimeLoopDuration()
+    {
+        return timeLoopDuration;
+    }
+
     /////////////////////////// GAME METHODS ///////////////////////////
 
     // GAME OVER AND GAME RESTART GESTION
@@ -95,13 +104,28 @@ public class GameScript : MonoBehaviour
         gameOverScreen.SetActive(true); // display Game Over Screen
     }
 
+    private void WinScreen()
+    {
+        winningScreen.SetActive(true); // display Winning Screen
+    }
+
+    // WIN GESTION
+
+    public void YouWin()
+    {
+        win = true;
+    }
+
+    public bool DidWin()
+    {
+        return win;
+    }
+
     // TIME LOOP
     private IEnumerator TimeLoop()
     {
         yield return new WaitForSeconds(timeLoopDuration - 10f);
         timerDoorStatus = true;
-        yield return new WaitForSeconds(10f);
-        alive = false;
     }
 
     // LIGHTS GESTION
@@ -142,7 +166,7 @@ public class GameScript : MonoBehaviour
     // CONTROLS GESTION
     private void IsControlOn()
     {
-        if (!alive || digicodeDisplayed || digicodeAnswerVisible) canControl = false; else canControl = true;
+        if (!alive || digicodeDisplayed || digicodeAnswerVisible || win) canControl = false; else canControl = true;
     }
 
     // KEY GESTION
